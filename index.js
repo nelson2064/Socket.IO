@@ -15,16 +15,23 @@ app.get('/', (req, res) => {
 io.on('connection', (socket) => {
   console.log('a user connected');
 
-
-  setInterval(function(){
-    let date = new Date();
-    let time = date.getTime();
-    // socket.send(time);
-
-    socket.emit("MY_CUSTOM_EVENT", time); //custom event
-   
+  socket.on('message', (msg)=>{
+    console.log(msg)
   })
 
+
+
+
+
+
+  // setInterval(function(){
+  //   let date = new Date();
+  //   let time = date.getTime();
+  //   // socket.send(time);
+
+  //   socket.emit("MY_CUSTOM_EVENT", time); //custom event
+   
+  // })
 
   // setInterval(function(){
   //   let date = new Date();

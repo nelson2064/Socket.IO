@@ -6,20 +6,20 @@
     <title>Document</title>
 </head>
 <body>
- <h1>socket project</h1>
- <h1 id="time"></h1>
 
+    <input type="text" id="name">
+    <button id="send" onclick="send()">Send</button>
 
- <script src="/socket.io/socket.io.js"></script>
- <script>
-    let socket = io();
-    // socket.on('message', (msg)=>{
-    //     document.getElementById("time").innerHTML=msg
-    // })
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        let socket = io();
 
-    socket.on('MY_CUSTOM_EVENT', (msg)=>{
-        document.getElementById("time").innerHTML=msg
-    })
- </script>
+        // Define the send function directly in the global scope
+        function send() {
+            let name = document.getElementById("name").value;
+            // Do something with the 'name' value, for example, send it to the server
+            socket.send(name);
+        }
+    </script>
 </body>
 </html>

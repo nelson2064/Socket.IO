@@ -13,7 +13,11 @@
  <script src="/socket.io/socket.io.js"></script>
  <script>
     let socket = io();
-    socket.on('message', (msg)=>{
+    // socket.on('message', (msg)=>{
+    //     document.getElementById("time").innerHTML=msg
+    // })
+
+    socket.on('MY_CUSTOM_EVENT', (msg)=>{
         document.getElementById("time").innerHTML=msg
     })
  </script>

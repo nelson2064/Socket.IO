@@ -19,7 +19,9 @@ io.on('connection', (socket) => {
   setInterval(function(){
     let date = new Date();
     let time = date.getTime();
-    socket.send(time);
+    // socket.send(time);
+
+    socket.emit("MY_CUSTOM_EVENT", time); //custom event
    
   })
 

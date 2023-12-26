@@ -8,16 +8,23 @@ const app = express();
 const server = createServer(app);
 const io = new Server(server);
 
+
+
+io.on('connection', (socket) => {
+  // console.log('a user connected');
+  io.sockets.emit("MyBroadcast","hello how are you?");
+});
+
 app.get('/', (req, res) => {
   res.sendFile(join(__dirname, 'index.html'));
 });
 
-io.on('connection', (socket) => {
-  console.log('a user connected');
+// io.on('connection', (socket) => {
+//   console.log('a user connected');
 
-  socket.on('CUSTOM_EVENT_NAME', (msg)=>{  //receing data from the client to ther server though custom event
-    console.log(msg)
-  })
+//   socket.on('CUSTOM_EVENT_NAME', (msg)=>{  //receing data from the client to ther server though custom event
+//     console.log(msg)
+//   })
 
 
 
@@ -47,7 +54,7 @@ io.on('connection', (socket) => {
   // socket.on('disconnect',()=>{
   //   console.log("user disconnected")
   // })
-});
+// });
 
 server.listen(3000, () => {
   console.log('server running at http://localhost:3000');

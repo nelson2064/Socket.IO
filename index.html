@@ -7,20 +7,20 @@
 </head>
 <body>
 
-    <input type="text" id="name">
-    <button id="send" onclick="send()">Send</button>
+
+    <div id="msg"></div>
+
+   
 
     <script src="/socket.io/socket.io.js"></script>
     <script>
         let socket = io();
 
-        // Define the send function directly in the global scope
-        function send() {
-            let name = document.getElementById("name").value;
-            // Do something with the 'name' value, for example, send it to the server
-            // socket.send(name);
-            socket.emit("CUSTOM_EVENT_NAME",name);  //creaing custom event in client side
-        }
+        socket.on("MyBroadcast", (data) => {
+    document.getElementById("msg").innerHTML = data;
+});
+
+
     </script>
 </body>
 </html>

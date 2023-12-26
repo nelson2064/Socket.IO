@@ -15,9 +15,25 @@ app.get('/', (req, res) => {
 io.on('connection', (socket) => {
   console.log('a user connected');
 
-  setTimeout(function(){
-      socket.send("send from server to client")
-  },5000)
+
+  setInterval(function(){
+    let date = new Date();
+    let time = date.getTime();
+    socket.send(time);
+   
+  })
+
+
+  // setInterval(function(){
+  //   let date = new Date();
+  //   let time = date.getTime();
+  //   socket.send(time);
+   
+  // },5000)
+
+  // setTimeout(function(){
+  //     socket.send("send from server to client")
+  // },5000)
   
   // socket.on('disconnect',()=>{
   //   console.log("user disconnected")

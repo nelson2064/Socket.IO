@@ -15,7 +15,7 @@ app.get('/', (req, res) => {
 io.on('connection', (socket) => {
   console.log('a user connected');
 
-  socket.on('message', (msg)=>{
+  socket.on('CUSTOM_EVENT_NAME', (msg)=>{  //receing data from the client to ther server though custom event
     console.log(msg)
   })
 

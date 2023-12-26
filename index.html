@@ -18,7 +18,8 @@
         function send() {
             let name = document.getElementById("name").value;
             // Do something with the 'name' value, for example, send it to the server
-            socket.send(name);
+            // socket.send(name);
+            socket.emit("CUSTOM_EVENT_NAME",name);  //creaing custom event in client side
         }
     </script>
 </body>

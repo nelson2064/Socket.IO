@@ -14,10 +14,14 @@ app.get('/', (req, res) => {
 
 io.on('connection', (socket) => {
   console.log('a user connected');
+
+  setTimeout(function(){
+      socket.send("send from server to client")
+  },5000)
   
-  socket.on('disconnect',()=>{
-    console.log("user disconnected")
-  })
+  // socket.on('disconnect',()=>{
+  //   console.log("user disconnected")
+  // })
 });
 
 server.listen(3000, () => {

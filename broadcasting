@@ -1,0 +1,5 @@
+boradcasting means sending a message to all connected clients
+broadcasting can be done at multiple levels
+according to namesapce
+according to room
+to broadcast an event to all the clients, we can use the io.sockets.emit method

@@ -9,52 +9,27 @@ const server = createServer(app);
 const io = new Server(server);
 
 
+let buyNsp = io.of("/buy");
+buyNsp.on('connection',(socket)=>{
+  buyNsp.emit("MyEvent","Hello buy")
+})
 
-io.on('connection', (socket) => {
-  // console.log('a user connected');
-  io.sockets.emit("MyBroadcast","hello how are you?");
-});
+let sellNsp = io.of("/sell");
+buyNsp.on('connection',(socket)=>{
+  sellNsp.emit("MyEvent","Hello sell")
+})
+
+
+
+// io.on('connection', (socket) => {
+//   // console.log('a user connected');
+//   io.sockets.emit("MyBroadcast","hello how are you?");
+// });
 
 app.get('/', (req, res) => {
   res.sendFile(join(__dirname, 'index.html'));
 });
 
-// io.on('connection', (socket) => {
-//   console.log('a user connected');
-
-//   socket.on('CUSTOM_EVENT_NAME', (msg)=>{  //receing data from the client to ther server though custom event
-//     console.log(msg)
-//   })
-
-
-
-
-
-
-  // setInterval(function(){
-  //   let date = new Date();
-  //   let time = date.getTime();
-  //   // socket.send(time);
-
-  //   socket.emit("MY_CUSTOM_EVENT", time); //custom event
-   
-  // })
-
-  // setInterval(function(){
-  //   let date = new Date();
-  //   let time = date.getTime();
-  //   socket.send(time);
-   
-  // },5000)
-
-  // setTimeout(function(){
-  //     socket.send("send from server to client")
-  // },5000)
-  
-  // socket.on('disconnect',()=>{
-  //   console.log("user disconnected")
-  // })
-// });
 
 server.listen(3000, () => {
   console.log('server running at http://localhost:3000');
